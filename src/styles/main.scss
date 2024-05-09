@@ -1,0 +1,279 @@
+@import "./variables";
+@import "./mixins";
+
+.layout {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid: "sidebar main" 1fr / auto 1fr;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  @include gradient-bg($background-dark, $background-light);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 1rem;
+  }
+}
+
+.main {
+  grid-area: main;
+}
+
+header {
+  @include flex-center(space-between, center);
+}
+
+.profile {
+  display: flex;
+  gap: 2rem;
+  margin-right: 5rem;
+  align-items: center;
+}
+
+.profile-sub {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.main-heading h1 {
+  font-weight: 700;
+  color: $text-color-main;
+  margin-left: 3.5rem;
+  letter-spacing: 2px;
+}
+
+.product-info {
+  margin-top: 2rem;
+  padding: 2rem 0 1rem 1rem;
+  background-color: $background-gray;
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.matches {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.matches .match {
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  box-shadow: $box-shadow-color 2px 2px 8px;
+  border-radius: 1rem;
+}
+
+.features {
+  @include flex-center(space-between, center);
+  gap: 1rem;
+  margin-top: 2rem;
+  input {
+    width: 15rem;
+    background-color: transparent;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    border-radius: 4px;
+  }
+  span {
+    margin-left: 1rem;
+  }
+}
+
+.filter {
+  display: flex;
+  gap: 1rem;
+  div {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-weight: 400;
+    font-size: 1.5rem;
+    border: solid black 0.5px;
+    cursor: pointer;
+  }
+  
+ 
+}
+
+.productTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+  th,
+  td {
+    padding: 8px;
+    border: 1px solid $border-color;
+    text-align: center;
+  }
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  tbody tr:hover {
+    background-color: $hover-bg-color;
+  }
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  button {
+    border: none;
+    margin: 1rem;
+    padding: 0.5rem;
+    display: inline;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  div {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+  label {
+    font-weight: 300;
+    font-size: 14px;
+    color: gray;
+    margin-bottom: 0.5rem;
+  }
+  input {
+    width: 7rem;
+    background-color: transparent;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    border-radius: 4px;
+  }
+  select {
+    width: 7rem;
+    background-color: transparent;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    border-radius: 4px;
+  }
+}
+
+.filter-bar {
+  padding: 1rem;
+  .buttons button {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    background-color: rgb(127, 224, 127);
+    border-radius: 0.5rem;
+  }
+}
+
+
+/* For screens smaller than 768px (tablets) */
+@media (max-width: 768px) {
+    .layout {
+      grid-template-areas:
+      "sidebar" "main";
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+    }
+  
+    .sidebar {
+      grid-area: sidebar;
+      height: 2fr;
+      display: flex;
+      margin-bottom: 1rem;
+      flex-direction: row;
+      margin-left: 0;
+       
+      .icons{
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+    }
+  
+    .main-heading h1 {
+      margin-left: 0;
+      text-align: center;
+    }
+  
+    .profile {
+      align-items: center;
+      margin-right: 0;
+    }
+  
+    .product-info {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .matches {
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-content: center;
+    }
+  
+    .matches .match {
+      width: 50vw;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+  
+    .features {
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1rem;
+    }
+  
+    .pagination {
+      align-items: center;
+    }
+  
+    .filter-bar {
+      .buttons button {
+        width: 100%;
+      }
+    }
+  }
+  
+  /* For screens smaller than 480px (mobile phones) */
+  @media (max-width: 480px) {
+ 
+
+    .filter {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      div {
+        padding: 0.5rem;
+        font-size: 1rem;
+      }
+    }
+  
+    form {
+      input,
+      select {
+        width: 100%;
+      }
+    }
+
+   
+  }
