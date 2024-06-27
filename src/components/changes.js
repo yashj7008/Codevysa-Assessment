@@ -5,3 +5,4 @@
 //changes second - testing again 
 //checker tp add only 
 // case 3 iv in working dir
+// check wit merge chaged
