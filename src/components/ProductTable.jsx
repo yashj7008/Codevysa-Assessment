@@ -3,7 +3,7 @@ import { LuArrowDownUp } from "react-icons/lu";
 
 const ProductTable = ({products}) => {
   return (
-    <table className="productTable">
+    <table className="productTable"  style={{  overflowX:"scroll" }}>
       <thead>
         <tr>
           <th><input type="checkbox" /></th>
